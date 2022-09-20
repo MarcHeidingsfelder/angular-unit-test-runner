@@ -1,15 +1,13 @@
-import { readFile } from "fs/promises";
+import { loadAngularConfig } from "./configLoader";
+import { extractProjectNames } from "./mapper";
+import { convertProjectsObjectToArray } from "./objectToArray";
+import { sortProjects } from "./projectSorter";
 
-export const Runner = (project: string):string => `run tests for project ${project}`;
+const runner = async ():Promise<string[]> => {
+    const config = await loadAngularConfig();
+    const projects = convertProjectsObjectToArray(config);
+    sortProjects(projects);
+    return extractProjectNames(projects);
+}
 
-export const loadAngularConfig = async ():Promise<AngularConfig> => {
-    try {
-        const configJson = await readFile('./angular.json', { encoding: 'utf-8' });
-        return JSON.parse(configJson);
-    } catch (error) {
-        return { projects: {} };
-    }
-
-} 
-
-declare type AngularConfig = { [keys: string]: unknown };
+export default runner;
