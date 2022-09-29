@@ -10,7 +10,7 @@ const runner = async (): Promise<void> => {
   sortProjects(projects);
 
   const projectNames = extractProjectNames(projects);
-  
+
   for (const projectName of projectNames) {
     await executeTestForProject(projectName);
   }
