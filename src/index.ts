@@ -1,12 +1,13 @@
-import { loadAngularConfig } from './configLoader';
+import { loadAngularConfig, loadAutRunnerConfig } from './configLoader';
 import { extractProjectNames } from './mapper';
 import { convertProjectsObjectToArray } from './objectToArray';
 import { sortProjects } from './projectSorter';
 import { executeTestForProject } from './testExecuter';
 
 const runner = async (): Promise<void> => {
-  const config = await loadAngularConfig();
-  const projects = convertProjectsObjectToArray(config);
+  const autRunnerConfig = await loadAutRunnerConfig();
+  const angularConfig = await loadAngularConfig(autRunnerConfig);
+  const projects = convertProjectsObjectToArray(angularConfig);
   sortProjects(projects);
 
   const projectNames = extractProjectNames(projects);
