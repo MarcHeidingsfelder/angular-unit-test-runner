@@ -4,14 +4,32 @@ import { AutRunnerConfig } from '../types';
 
 jest.mock('fs/promises');
 
-const readFileMock = readFile as jest.MockedFunction<typeof readFile>;
+const readFileOptions = { encoding: 'utf-8' };
+let readFileMock: jest.MockedFunction<typeof readFile>;
+let autRunnerConfigMock: AutRunnerConfig;
+
+beforeEach(() => {
+  readFileMock = readFile as jest.MockedFunction<typeof readFile>;
+  autRunnerConfigMock = {};
+});
 
 describe('load angular config', () => {
-  const autRunnerConfigMock: AutRunnerConfig = {};
+
   it('load angular.json', async () => {
     readFileMock.mockResolvedValue('{"projects": ["project1", "project2", "project3"]}');
     const retVal = await loadAngularConfig(autRunnerConfigMock);
     expect(retVal).toEqual({ projects: ['project1', 'project2', 'project3'] });
+  });
+
+  it('should use the path from runner config to load angular.json', async () => {
+    autRunnerConfigMock.angularJson = 'file_not_exists';
+    const retVal = await loadAngularConfig(autRunnerConfigMock);
+    expect(readFileMock).toHaveBeenCalledWith(autRunnerConfigMock.angularJson, readFileOptions);
+  });
+
+  it('should use the default path for angular.json if not specified in runner config', async () => {
+    const retVal = await loadAngularConfig(autRunnerConfigMock);
+    expect(readFileMock).toHaveBeenCalledWith('./angular.json', readFileOptions);
   });
 
   it('returns empty object on error', async () => {
