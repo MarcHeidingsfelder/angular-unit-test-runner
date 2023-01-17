@@ -7,11 +7,10 @@ export const loadAngularConfig = async (autRunnerConfig: AutRunnerConfig): Promi
   return loadConfig(pathToAngularJson, defaultReturnValue);
 };
 
-
 export const loadAutRunnerConfig = async (): Promise<AutRunnerConfig> => {
-  const defaultReturnValue: AutRunnerConfig = { };
+  const defaultReturnValue: AutRunnerConfig = {};
   return loadConfig('./aut-runner.json', defaultReturnValue);
-}
+};
 
 async function loadConfig<T>(path: string, defaultValue: T): Promise<T> {
   try {
@@ -21,4 +20,3 @@ async function loadConfig<T>(path: string, defaultValue: T): Promise<T> {
     return defaultValue;
   }
 }
-

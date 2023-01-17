@@ -14,7 +14,6 @@ beforeEach(() => {
 });
 
 describe('load angular config', () => {
-
   it('load angular.json', async () => {
     readFileMock.mockResolvedValue('{"projects": ["project1", "project2", "project3"]}');
     const retVal = await loadAngularConfig(autRunnerConfigMock);
@@ -51,6 +50,6 @@ describe('load aut-runner config', () => {
   it('returns empty object on error', async () => {
     readFileMock.mockRejectedValue('');
     const retVal = await loadAutRunnerConfig();
-    expect(retVal).toEqual({ });
+    expect(retVal).toEqual({});
   });
 });
