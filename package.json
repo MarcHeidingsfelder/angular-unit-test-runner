@@ -1,5 +1,5 @@
 {
-  "name": "angular-unit-test-runner",
+  "name": "@mh-applications/angular-unit-test-runner",
   "version": "0.0.4",
   "description": "Runs unit test for a specific angular project or for all projects.",
   "main": "./lib/index.js",
@@ -8,6 +8,7 @@
   },
   "scripts": {
     "test": "jest --config jestconfig.json",
+    "coverage": "jest --config jestconfig.json --coverage",
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
@@ -48,5 +49,8 @@
   },
   "files": [
     "lib/**/*"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }
