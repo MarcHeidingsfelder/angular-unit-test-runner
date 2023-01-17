@@ -6,3 +6,11 @@ export declare type Project = { name: string; config: ProjectConfig };
 export declare type AutRunnerConfig = {
     angularJson?: string;
 };
+
+export declare type TestResult = {
+    projectName: string;
+    tests: number;
+    succeeded: number;
+    failed: number;
+    skipped: number;
+}
