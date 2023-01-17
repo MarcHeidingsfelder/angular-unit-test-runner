@@ -1,6 +1,6 @@
 {
   "name": "@mh-code/angular-unit-test-runner",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Runs unit test for a specific angular project or for all projects.",
   "main": "./lib/index.js",
   "bin": {
