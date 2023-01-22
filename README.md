@@ -5,7 +5,7 @@ It will provide the possibilities to run unit test on a single project or on all
 
 Install the test runner
 ```bash
-npm i --save-dev angular-unit-test-runner
+npm i --save-dev @mh-code/angular-unit-test-runner
 ```
 
 Register a script in the package.json
