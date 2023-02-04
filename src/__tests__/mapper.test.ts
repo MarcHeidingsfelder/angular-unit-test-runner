@@ -1,5 +1,5 @@
-import { Project } from '../types';
-import { extractProjectNames } from '../mapper';
+import { Project } from '../runner/types';
+import { extractProjectNames } from '../runner/mapper';
 
 describe('extractProjectNames', () => {
   it('should return the project names for valid list of projects', () => {

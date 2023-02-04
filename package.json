@@ -2,9 +2,9 @@
   "name": "@mh-code/angular-unit-test-runner",
   "version": "0.0.6",
   "description": "Runs unit test for a specific angular project or for all projects.",
-  "main": "./lib/index.js",
+  "main": "./lib/runner/index.js",
   "bin": {
-    "aut-runner": "./lib/bin.js"
+    "aut-runner": "./lib/bin/bin.js"
   },
   "scripts": {
     "test": "jest --config jestconfig.json",
@@ -17,11 +17,13 @@
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags",
-    "pack": " npm pack --pack-destination=./output/"
+    "pack": " npm pack --pack-destination=./output/",
+    "build_n_pack": "tsc && npm pack --pack-destination=./output/",
+    "update": "npm cache clean --force && npx rimraf package-lock.json && npm install"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MarcHeidingsfelder/angular-unit-test-runner.git"
+    "url": "https://github.com/MarcHeidingsfelder/angular-unit-test-runner.git"
   },
   "keywords": [
     "angular",
@@ -34,6 +36,8 @@
     "url": "https://github.com/MarcHeidingsfelder/angular-unit-test-runner/issues"
   },
   "homepage": "https://github.com/MarcHeidingsfelder/angular-unit-test-runner#readme",
+  "dependencies": {
+  },
   "peerDependencies": {
     "@angular/cli": "10.0.0 - 15.0.0"
   },

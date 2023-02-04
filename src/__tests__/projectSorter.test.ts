@@ -1,5 +1,5 @@
-import { Project } from '../types';
-import { sortProjects } from '../projectSorter';
+import { Project } from '../runner/types';
+import { sortProjects } from '../runner/projectSorter';
 
 describe('sortProjects', () => {
   it('should sort projects in correct order', () => {

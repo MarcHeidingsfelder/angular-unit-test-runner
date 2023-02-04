@@ -1,5 +1,5 @@
-import { AngularConfig, Project } from '../types';
-import { convertProjectsObjectToArray } from '../objectToArray';
+import { AngularConfig, Project } from '../runner/types';
+import { convertProjectsObjectToArray } from '../runner/objectToArray';
 
 describe('convertProjectsObjectToArray', () => {
   it('should return a Project array from a AngularConfig', () => {

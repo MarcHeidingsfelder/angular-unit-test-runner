@@ -1,6 +1,6 @@
-import { loadAngularConfig, loadAutRunnerConfig } from '../configLoader';
+import { loadAngularConfig, loadAutRunnerConfig } from '../runner/configLoader';
 import { readFile } from 'fs/promises';
-import { AutRunnerConfig } from '../types';
+import { AutRunnerConfig } from '../runner/types';
 
 jest.mock('fs/promises');
 
