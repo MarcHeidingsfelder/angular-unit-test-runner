@@ -26,7 +26,7 @@ const runner = async (): Promise<void> => {
     restoreConsole();
   }
 
-  console.log('finished test runs for', projectNames.length, 'projects');
+  calcStatistics();
 };
 
 
