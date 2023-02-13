@@ -42,10 +42,18 @@ You can set the execution order by adding the metric key to the cli property of 
   }
 ```
 
-# Cli commands
-At the moment, this package does not much more as 
+# Commands
+Execute the runner from command line.
+Use the alias from the cli registration.
 ```bash
-ng test
+aut-runner
+```
+Execute the runner as npm script.
+Add a script entry to your package.json
+```json
+  "scripts": {
+    "test": "aut-runner"
+  }
 ```
 
 # Next steps
