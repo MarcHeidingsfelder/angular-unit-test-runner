@@ -10,7 +10,7 @@ const logger = console.log;
 
 const restoreConsole = () => {
   console.log = logger;
-}
+};
 
 const runner = async (): Promise<void> => {
   const autRunnerConfig = await loadAutRunnerConfig();
@@ -28,6 +28,5 @@ const runner = async (): Promise<void> => {
 
   calcStatistics();
 };
-
 
 export default runner;
