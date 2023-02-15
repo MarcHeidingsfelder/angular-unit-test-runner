@@ -11,16 +11,6 @@ Install the test runner
 npm i --save-dev @mh-code/angular-unit-test-runner
 ```
 
-# Cli registration
-Register a script in the package.json
-
-```json
-{
-  "scripts": {
-    "test-runner": "aut-runner"
-  }
-}
-```
 # Configuration
 To configure the behavior of the runner, create a aut-runner.json next to your package.json
 ```json
@@ -34,12 +24,12 @@ Properties:
 You can set the execution order by adding the metric key to the cli property of the project in the angular.json
 ``` json
 "projects": {
-    "awesome-project": {
-      "cli": {
-        "metric": 2
-      },
-    }
+  "awesome-project": {
+    "cli": {
+      "metric": 2
+    },
   }
+}
 ```
 
 # Commands
@@ -51,9 +41,23 @@ aut-runner
 Execute the runner as npm script.
 Add a script entry to your package.json
 ```json
-  "scripts": {
-    "test": "aut-runner"
-  }
+"scripts": {
+  "test": "aut-runner"
+}
+```
+
+### Options
+You can pass all options which you can pass to ng-test.
+
+Cli
+```bash
+aut-runner --watch=false
+```
+package.json
+```json
+"scripts": {
+  "test": "aut-runner --watch=false"
+}
 ```
 
 # Next steps

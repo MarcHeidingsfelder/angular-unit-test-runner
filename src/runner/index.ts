@@ -1,4 +1,5 @@
 import { AutState } from '@mh-code/angular-unit-test-state';
+import { angularTestOptions } from './cliOptions';
 import { loadAngularConfig, loadAutRunnerConfig } from './configLoader';
 import { extractProjectNames } from './mapper';
 import { convertProjectsObjectToArray } from './objectToArray';
@@ -19,10 +20,11 @@ const runner = async (): Promise<void> => {
 
   sortProjects(projects);
   const projectNames = extractProjectNames(projects);
+  const ngTestOptions = angularTestOptions();
 
   for (const projectName of projectNames) {
     AutState.currentProject = projectName;
-    await executeTestForProject(projectName);
+    await executeTestForProject(projectName, ngTestOptions);
     restoreConsole();
   }
 
