@@ -4,48 +4,47 @@ import cli from '@angular/cli';
 jest.mock('@angular/cli');
 
 describe('test executer', () => {
-    
-    const logFunction = console.log;
-    let cliMock: jest.MockedFunction<typeof cli>;
-    
-    beforeEach(() => {
-        console.log = logFunction;
-        cliMock = cli as jest.MockedFunction<typeof cli>;
-    });
+  const logFunction = console.log;
+  let cliMock: jest.MockedFunction<typeof cli>;
 
-    it('should log the project name', () => {
-        const logSpy = jest.spyOn(console, 'log');
-        const projectName = 'test_1';
+  beforeEach(() => {
+    console.log = logFunction;
+    cliMock = cli as jest.MockedFunction<typeof cli>;
+  });
 
-        executeTestForProject(projectName, []);
+  it('should log the project name', () => {
+    const logSpy = jest.spyOn(console, 'log');
+    const projectName = 'test_1';
 
-        expect(logSpy).toBeCalledWith('run tests for', projectName);
-    });
+    executeTestForProject(projectName, []);
 
-    it('should call the angular cli', () => {
-        const projectName = 'test_1';
+    expect(logSpy).toBeCalledWith('run tests for', projectName);
+  });
 
-        executeTestForProject(projectName, []);
+  it('should call the angular cli', () => {
+    const projectName = 'test_1';
 
-        expect(cliMock).toBeCalled();
-    });
+    executeTestForProject(projectName, []);
 
-    it('should call the angular cli with the project name and the test option', () => {
-        const projectName = 'test_1';
+    expect(cliMock).toBeCalled();
+  });
 
-        executeTestForProject(projectName, []);
+  it('should call the angular cli with the project name and the test option', () => {
+    const projectName = 'test_1';
 
-        expect(cliMock).toHaveBeenCalledWith({ cliArgs: ['test', projectName] });
-    });
+    executeTestForProject(projectName, []);
 
-    it('should call the angular cli with the provided arguments', () => {
-        const projectName = 'test_1';
+    expect(cliMock).toHaveBeenCalledWith({ cliArgs: ['test', projectName] });
+  });
 
-        const testArguments = ['hello', 'world'];
-        const expectArguments = ['test', projectName, ...testArguments];
+  it('should call the angular cli with the provided arguments', () => {
+    const projectName = 'test_1';
 
-        executeTestForProject(projectName, testArguments);
+    const testArguments = ['hello', 'world'];
+    const expectArguments = ['test', projectName, ...testArguments];
 
-        expect(cliMock).toHaveBeenCalledWith({ cliArgs: expectArguments });
-    });
+    executeTestForProject(projectName, testArguments);
+
+    expect(cliMock).toHaveBeenCalledWith({ cliArgs: expectArguments });
+  });
 });
